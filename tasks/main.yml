@@ -1,10 +1,16 @@
 ---
 
+- dynamic_defaults:
+    hostvars: '{{ hostvars[inventory_hostname] }}'
+    defaults: '{{ bash_dynamic_defaults }}'
+    must_match: yes
+  tags: [bash, always]
+
 - block:
     - name: Configure BASH
       template:
         src: '{{ bash_config_file }}'
-        dest: /etc/bash.bashrc
+        dest: '{{ bash_config_filename }}'
         mode: 0644
 
     - name: Configure BASH user profile skeleton

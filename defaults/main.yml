@@ -1,12 +1,22 @@
 bash_aliases: {}
-bash_config_file: bash.bashrc.j2
 bash_extra_configuration: ''
 bash_extra_user_configuration: ''
 bash_history_control: ignoreboth
 bash_history_file_size: 2000
 bash_history_size: 1000
 bash_history_time_format: '%d/%m/%y %T '
-bash_user_config_file: user.bashrc.j2
 bash_users:
   - root
   - '{{ ansible_user }}'
+
+bash_dynamic_defaults:
+
+  apt:
+    bash_config_file: bash.apt.bashrc.j2
+    bash_config_filename: /etc/bash.bashrc
+    bash_user_config_file: user.apt.bashrc.j2
+
+  yum:
+    bash_config_file: bash.yum.bashrc.j2
+    bash_config_filename: /etc/bashrc
+    bash_user_config_file: user.yum.bashrc.j2
