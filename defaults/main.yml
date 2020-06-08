@@ -16,6 +16,11 @@ bash_dynamic_defaults:
     bash_config_filename: /etc/bash.bashrc
     bash_user_config_file: user.apt.bashrc.j2
 
+  dnf:
+    bash_config_file: bash.dnf.bashrc.j2
+    bash_config_filename: /etc/bashrc
+    bash_user_config_file: user.dnf.bashrc.j2
+
   yum:
     bash_config_file: bash.yum.bashrc.j2
     bash_config_filename: /etc/bashrc

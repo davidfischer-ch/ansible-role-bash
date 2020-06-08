@@ -1,0 +1,29 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific environment
+PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+HISTCONTROL={{ bash_history_control }}
+HISTSIZE={{ bash_history_size|int }}
+HISTFILESIZE={{ bash_history_file_size|int }}
+HISTTIMEFORMAT="{{ bash_history_time_format }}"
+
+# User specific aliases and functions
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+{% for key, value in bash_aliases.items()|sort %}
+alias {{ key }}="{{ value }}"
+{% endfor %}
+
+{{ bash_extra_user_configuration }}
