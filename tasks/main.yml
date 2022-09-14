@@ -11,19 +11,19 @@
       template:
         src: '{{ bash_config_file }}'
         dest: '{{ bash_config_filename }}'
-        mode: 0644
+        mode: '644'
 
     - name: Configure BASH user profile skeleton
       template:
         src: '{{ bash_user_config_file }}'
         dest: /etc/skel/.bashrc
-        mode: 0644
+        mode: '644'
 
     - name: Configure BASH users profile
       template:
         src: '{{ bash_user_config_file }}'
         dest: '{{ ansible_user_dir }}/.bashrc'
-        mode: 0644
+        mode: '644'
       become_user: '{{ item }}'
       loop: '{{ bash_users }}'
   become: yes
